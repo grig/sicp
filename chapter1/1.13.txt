@@ -1,0 +1,39 @@
+; sigma = (1 - sqrt(5))/2
+; fib(n) = (phi^n - sigma^n)/sqrt(5)
+
+; phi = (1 + sqrt(5))/2
+; phi^2 = phi + 1
+
+fib(n) = 1*fib(n - 1) + 1*fib(n - 2)
+   =                    2*fib(n - 2) + 1*fib(n - 3)
+   =                                   3*fib(n - 3) + 2*fib(n - 4)
+   =                                                  5*fib(n - 4) + 3*fib(n - 5)
+   
+fib(n) = fib(k + 1)*fib(n - k) + fib(k)*fib(n - (k + 1))
+
+phi^1                                             = 1phi + 0
+phi^2                                             = 1phi + 1
+phi^3 = phi*phi^2 = phi(phi + 1) = phi^2 + phi    = 2phi + 1
+phi^4 = phi*phi^3 = phi(2phi + 1) = 2phi^2 + 1phi = 3phi + 2
+phi^5 = ...       =               = 3phi^2 + 2phi = 5phi + 3
+phi^6 =                             5phi^2 + 3phi = 8phi + 5
+
+phi^n = fib(n)*phi + fib(n - 1)
+
+sigma^2 = ((1 - sqrt(5))/2)^2 = (1 - 2sqrt(5) + 5)/4 = (3 - sqrt(5))/2 = 1 + (1 - sqrt(5))/2 = 1 + sigma
+
+sigma^n  = fib(n)*sigma + fib(n - 1)
+
+(phi^n - sigma^n) = fib(n) * (phi - sigma) = fib(n) * sqrt(5)
+
+fib(n) = (phi^n - sigma^n)/sqrt(5)
+
+2 < sqrt(5) < 3
+-3 < -sqrt(5) < -2
+-2 < 1 - sqrt(5) < -1
+-1 < (1 - sqrt(5))/2 < -1/2
+-1 < sigma < -1/2
+
+abs(sigma^n) < 1
+
+fib(n) = floor(phi^n/sqrt(5))
